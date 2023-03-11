@@ -65,7 +65,7 @@ class MyDrawer extends StatelessWidget {
                 ),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                   IconButton(onPressed: () async {
-                    Uri url = Uri.parse('https://github.com/toass');
+                    Uri url = Uri.parse('https://github.com/fivebellhyun');
                     if(await canLaunchUrl(url)){
                       await launchUrl(url);
                     }
@@ -179,7 +179,7 @@ class AboutMe extends StatelessWidget {
           const SizedBox(height: 10,),
           Row(children: const [
             SizedBox(width: 5,),
-            Text('Toass\'s Portfolio', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+            Text('fivebellhyun\'s Portfolio', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
           ]),
           const Spacer(flex: 2,),
           const CircleAvatar(

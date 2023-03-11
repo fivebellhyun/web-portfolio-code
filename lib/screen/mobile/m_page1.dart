@@ -58,8 +58,8 @@ class MobilePage1 extends StatelessWidget {
 
 
 Future<void> _launchClubSandwichWebUrl() async {
-  if (!await launchUrl(Uri.parse('https://toass.github.io/clubsandwich.io/#/'))) {
-    throw 'Could not launch https://toass.github.io/clubsandwich.io/#/';
+  if (!await launchUrl(Uri.parse('https://fivebellhyun.github.io/clubsandwich.io/#/'))) {
+    throw 'Could not launch https://fivebellhyun.github.io/clubsandwich.io/#/';
   }
 }
 
