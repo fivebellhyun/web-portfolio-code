@@ -42,10 +42,10 @@ class DesktopPage2 extends StatelessWidget {
             "보안을 강화하여 대리출석 방지, 출석 조작을 방지함과 동시에 간편히 버튼 한번만 누르면 출석이 되도록 설계하였습니다.\n", style: TextStyle(color: Colors.black54, fontSize: 17),),
           ),
 
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(
               onTap: _launchMapoAppUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(Icons.shop, color: Colors.black54,),
                 Text("  App service", style: TextStyle(color: Colors.black54, fontSize: 17),),
               ],),

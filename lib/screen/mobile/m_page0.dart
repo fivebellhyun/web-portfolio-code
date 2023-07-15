@@ -28,17 +28,17 @@ class MobilePage0 extends StatelessWidget {
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 200),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(
               onTap: _launchDreamFilmIOSUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(CupertinoIcons.bag_fill, color: Colors.black54,),
                 Text("  Apple Store", style: TextStyle(color: Colors.black54),),
               ],),
             ),
             InkWell(
               onTap: _launchDreamfilmAPKUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(Icons.shop, color: Colors.black54,),
                 Text("  Play Store", style: TextStyle(color: Colors.black54),),
               ],),

@@ -22,7 +22,7 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Column(mainAxisAlignment: MainAxisAlignment.center, children: const [
+        const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text("Contact.", style: TextStyle(fontSize: 17),),
           SizedBox(height: 50,),
           Text("단순히\n주어진 코딩을\n찍어내는 것이 아닌\n최적의 사용자 경험을 제공하는\nFlutter dev. 오종현이 되겠습니다.", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
@@ -30,9 +30,9 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
 
         Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end, children: [
           const Spacer(flex: 60,),
-          InkWell(
+          const InkWell(
             onTap: _launchKakaoUrl,
-            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               Icon(CupertinoIcons.bubble_left_bubble_right_fill, color: Colors.black54,),
               Text("  kakao : bishop03", style: TextStyle(color: Colors.black54),),
             ],),
@@ -46,7 +46,7 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
                 })
               ));
             },
-            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+            child: const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               Icon(Icons.email, color: Colors.black54,),
               Text("  taoss3932@gmail.com", style: TextStyle(color: Colors.black54),),
             ],),
@@ -104,9 +104,9 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
                       )
                     ] : []
                   ),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+                  child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Icon(Icons.shopping_bag_outlined, color: Colors.white,),
-                    Text("  모의 주문하기", style: TextStyle(color: Colors.white),),
+                    Text("  프로젝트 의뢰하기", style: TextStyle(color: Colors.white),),
                   ],),),
               ),
             ],

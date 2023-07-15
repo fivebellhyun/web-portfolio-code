@@ -30,25 +30,23 @@ abstract class AppTheme{
 
   static ThemeData light() => ThemeData(
     brightness: Brightness.light,
-    accentColor: accentColor,
     visualDensity: visualDensity,
     textTheme: GoogleFonts.mulishTextTheme().apply(bodyColor: Appcolors.textDark),
     backgroundColor: _LightColors.background,
     scaffoldBackgroundColor: _LightColors.background,
     cardColor: _LightColors.card,
-    primaryTextTheme: const TextTheme(headline6: TextStyle(color: Appcolors.textDark)),
+    primaryTextTheme: const TextTheme(titleLarge: TextStyle(color: Appcolors.textDark)),
     iconTheme: const IconThemeData(color: Appcolors.iconDark)
   );
 
   static ThemeData dark() => ThemeData(
     brightness: Brightness.dark,
-    accentColor: accentColor,
     visualDensity: visualDensity,
     textTheme: GoogleFonts.interTextTheme().apply(bodyColor: Appcolors.textLight),
     backgroundColor: _DarkColors.background,
     scaffoldBackgroundColor: _DarkColors.background,
     cardColor: _DarkColors.card,
-    primaryTextTheme: const TextTheme(headline6: TextStyle(color: Appcolors.textLight)),
+    primaryTextTheme: const TextTheme(titleLarge: TextStyle(color: Appcolors.textLight)),
     iconTheme: const IconThemeData(color: Appcolors.iconLight)
   );
 }

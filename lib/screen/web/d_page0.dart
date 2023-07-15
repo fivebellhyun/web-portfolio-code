@@ -44,17 +44,17 @@ class DesktopPage0 extends StatelessWidget {
             "이렇게 작성한 꿈을 바탕으로 인공지능이 분석해주는 스마트 꿈 일기장입니다. ", style: TextStyle(fontSize: 17, color: Colors.black54),),
           ),
           const Text("This project covers android, ios platforms with one code.\n", style: TextStyle(color: Colors.black54),),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(
               onTap: _launchDreamFilmIOSUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(CupertinoIcons.bag_fill, color: Colors.black54,),
                 Text("  Apple Store", style: TextStyle(color: Colors.black54, fontSize: 17),),
               ],),
             ),
             InkWell(
               onTap: _launchDreamFilmAPKUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(Icons.shop, color: Colors.black54,),
                 Text("  Play Store", style: TextStyle(color: Colors.black54, fontSize: 17),),
               ],),

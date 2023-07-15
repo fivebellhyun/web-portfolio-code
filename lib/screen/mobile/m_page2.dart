@@ -28,10 +28,10 @@ class MobilePage2 extends StatelessWidget {
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 200),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(
               onTap: _launchMapoAppUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(Icons.shop, color: Colors.black54,),
                 Text("  App service", style: TextStyle(color: Colors.black54),),
               ],),

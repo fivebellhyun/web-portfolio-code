@@ -27,9 +27,9 @@ class _MobileLastPageState extends State<MobileLastPage> {
         width: size.width * 0.8,
         child: const Text("단순히\n주어진 코딩을\n찍어내는 것이 아닌\n최적의 사용자 경험을 제공하는\nFlutter dev. 오종현이 되겠습니다.", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),)),
       const SizedBox(height: 30,),
-      InkWell(
+      const InkWell(
         onTap: _launchKakaoUrl,
-        child: Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+        child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
           Icon(CupertinoIcons.bubble_left_bubble_right_fill, color: Colors.black54,),
           Text("  kakao : bishop03", style: TextStyle(color: Colors.black54),),
         ],),
@@ -43,7 +43,7 @@ class _MobileLastPageState extends State<MobileLastPage> {
             })
           ));
         },
-        child: Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+        child: const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
           Icon(Icons.email, color: Colors.black54,),
           Text("  taoss3932@gmail.com", style: TextStyle(color: Colors.black54),),
         ],),
@@ -53,14 +53,9 @@ class _MobileLastPageState extends State<MobileLastPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
-            onTap: (){},
-            child: Container(
-              width: size.width*0.3,
-              alignment: Alignment.center,
-              child: const Text("WITH ME", style: TextStyle(fontSize: 20, color: Colors.black),),
-            ),
-          ),
-          GestureDetector(
+            onTap: (){
+
+            },
             onTapUp: (_){
               setState(() {
                 glowing = false;
@@ -108,9 +103,9 @@ class _MobileLastPageState extends State<MobileLastPage> {
                   )
                 ] : []
               ),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(Icons.shopping_bag_outlined, color: Colors.white,),
-                Text("  모의 주문하기", style: TextStyle(color: Colors.white),),
+                Text("  프로젝트 의뢰하기", style: TextStyle(color: Colors.white),),
               ],),),
           ),
         ],
@@ -130,5 +125,11 @@ String? encodeQueryParameters(Map<String, String> params) {
 Future<void> _launchKakaoUrl() async {
   if (!await launchUrl(Uri.parse('https://open.kakao.com/o/sOQutMId'))) {
     throw 'Could not launch https://open.kakao.com/o/sOQutMId';
+  }
+}
+
+Future<void> _launchKmongWebUrl() async {
+  if (!await launchUrl(Uri.parse('https://gardenus-kr.web.app/#/'))) {
+    throw 'Could not launch https://gardenus-kr.web.app/#/';
   }
 }
