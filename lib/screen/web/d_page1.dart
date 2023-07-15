@@ -20,7 +20,7 @@ class DesktopPage1 extends StatelessWidget {
           const SizedBox(height: 50,),
           const Text("# 02", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),),
           const SizedBox(height: 10,),
-          const Text("Club Sandwich", style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.black),),
+          const Text("Garden Us", style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.black),),
           const SizedBox(height: 30,),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 500),
