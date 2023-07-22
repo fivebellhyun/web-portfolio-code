@@ -57,6 +57,7 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
             children: [
               SizedBox(width: size.width*0.3,),
               GestureDetector(
+                onTap: _launchContactUrl,
                 onTapUp: (_){
                   setState(() {
                     glowing = false;
@@ -128,5 +129,11 @@ String? encodeQueryParameters(Map<String, String> params) {
 Future<void> _launchKakaoUrl() async {
   if (!await launchUrl(Uri.parse('https://open.kakao.com/o/sOQutMId'))) {
     throw 'Could not launch https://open.kakao.com/o/sOQutMId';
+  }
+}
+
+Future<void> _launchContactUrl() async {
+  if (!await launchUrl(Uri.parse('https://kmong.com/gig/487571'))) {
+    throw 'Could not launch https://kmong.com/gig/487571';
   }
 }

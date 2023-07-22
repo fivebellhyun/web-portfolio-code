@@ -17,15 +17,15 @@ class MyDrawer extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(8),
             child: Column(children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
+              const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Attending', style: TextStyle(color: Colors.white),),
                 Text('성균관대학교(SKKU)')
               ],),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
+              const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Graduate', style: TextStyle(color: Colors.white),),
                 Text('마포고등학교(과학중점)')
               ],),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
+              const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Age', style: TextStyle(color: Colors.white),),
                 Text('19(Korean age : 21)')
               ],),
@@ -33,9 +33,9 @@ class MyDrawer extends StatelessWidget {
               const SizedBox(height: 10,),
               Container(alignment: Alignment.centerLeft, child: const Text('Skills', style: TextStyle(color: Colors.white))),
               const SizedBox(height: 10,),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   Expanded(child: AboutSkill(title: "Flutter", persent: 0.95,)),
                   SizedBox(width: 15,),
                   Expanded(child: AboutSkill(title: "Admob", persent: 0.78,)),
@@ -175,19 +175,19 @@ class AboutMe extends StatelessWidget {
       aspectRatio: 1.23,
       child: Container(
         color: const Color(0xff242430),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const SizedBox(height: 10,),
-          Row(children: const [
+        child: const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          SizedBox(height: 10,),
+          Row(children: [
             SizedBox(width: 5,),
             Text('fivebellhyun\'s Portfolio', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
           ]),
-          const Spacer(flex: 2,),
-          const CircleAvatar(
+          Spacer(flex: 2,),
+          CircleAvatar(
             radius: 50,
             backgroundImage: AssetImage("repo/my_profile.jpg"),),
-          const Text("Jonghyun Oh", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
-          const Text("Flutter(Dart) developer", textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w200, height: 1.5),),
-          const Spacer(flex: 2,)
+          Text("Jonghyun Oh", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
+          Text("Flutter(Dart) developer", textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w200, height: 1.5),),
+          Spacer(flex: 2,)
         ],),
       ),);
   }

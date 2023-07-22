@@ -53,9 +53,7 @@ class _MobileLastPageState extends State<MobileLastPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
-            onTap: (){
-
-            },
+            onTap: _launchContactUrl,
             onTapUp: (_){
               setState(() {
                 glowing = false;
@@ -128,8 +126,8 @@ Future<void> _launchKakaoUrl() async {
   }
 }
 
-Future<void> _launchKmongWebUrl() async {
-  if (!await launchUrl(Uri.parse('https://gardenus-kr.web.app/#/'))) {
-    throw 'Could not launch https://gardenus-kr.web.app/#/';
+Future<void> _launchContactUrl() async {
+  if (!await launchUrl(Uri.parse('https://kmong.com/gig/487571'))) {
+    throw 'Could not launch https://kmong.com/gig/487571';
   }
 }
