@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DesktopPage1 extends StatelessWidget {
   const DesktopPage1({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +33,13 @@ class DesktopPage1 extends StatelessWidget {
 
         Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
           const Spacer(flex: 55,),
-          const Text("[개발 기여도] : 34 %\n\n"
-          "[플랫폼] : Web, Android, IOS\n\n"
+          const Text("[플랫폼] : Web, Android, IOS\n\n"
           "[타겟층] : 대학생\n", style: TextStyle(fontSize: 17),),
           Container(
             width: size.width - 1000,
             alignment: Alignment.center,
             child: const Text("[About] : 대학생 전용 소개팅 플랫폼인 Garden Us입니다. "
-            "결제 시스템, 시즌 시스템, 매칭 시스템, 등을 구현하였습니다.  "
+            "결제 시스템, 시즌 시스템, 매칭 시스템, 채팅 시스템 등을 구현하였습니다.  "
             "모바일, PC, 등 어느 플랫폼에서나 동일하게 쾌적한 서비스를 이용할 수 있도록 고도화하였습니다.", style: TextStyle(fontSize: 17),),
           ),
           const Text("This project covers web, android, ios platforms with one code.\n"),

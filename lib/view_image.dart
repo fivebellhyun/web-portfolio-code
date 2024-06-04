@@ -3,7 +3,7 @@ import 'widget/icon_button.dart';
 import 'package:flutter/cupertino.dart';
 
 class ViewImage extends StatelessWidget{
-  const ViewImage({Key? key}) : super(key: key);
+  const ViewImage({super.key});
   
   @override
   Widget build(BuildContext context){

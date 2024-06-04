@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class MobilePage3 extends StatelessWidget {
   const MobilePage3({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget{
-  const Responsive({Key? key, required this.mobile, this.mobileLarge, this.tablet, required this.desktop}) : super(key: key);
+  const Responsive({super.key, required this.mobile, this.mobileLarge, this.tablet, required this.desktop});
 
   final Widget mobile;
   final Widget? mobileLarge;

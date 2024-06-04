@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MobileLastPage extends StatefulWidget {
-  const MobileLastPage({
-    Key? key,
-  }) : super(key: key);
+  const MobileLastPage({super.key});
 
   @override
   State<MobileLastPage> createState() => _MobileLastPageState();

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
+import 'package:taoss3932_web_site/Components/app_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,15 @@ class MyDrawer extends StatelessWidget {
                 Text('Graduate', style: TextStyle(color: Colors.white),),
                 Text('마포고등학교(과학중점)')
               ],),
-              const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('Age', style: TextStyle(color: Colors.white),),
-                Text('19(Korean age : 21)')
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                const Text('Age', style: TextStyle(color: Colors.white),),
+                Text(
+                  '${
+                    DateTime.now().month >= 9 
+                      ? DateTime.now().year - 2003 
+                      : DateTime.now().year - 2004
+                    }(Korean age : ${DateTime.now().year - 2002})'
+                )
               ],),
               const Divider(color: Color.fromARGB(255, 139, 140, 148),),
               const SizedBox(height: 10,),
@@ -49,7 +57,7 @@ class MyDrawer extends StatelessWidget {
               const SizedBox(height: 10,),
               const AboutCode(title: "Flutter_(android,ios,web)", percent: 0.95,),
               const SizedBox(height: 15,),
-              const AboutCode(title: "Python", percent: 0.37,),
+              const AboutCode(title: "Node.js", percent: 0.37,),
               const SizedBox(height: 15,),
               const AboutCode(title: "Kotlin_(for flutter)", percent: 0.14,),
               const SizedBox(height: 15,),
@@ -69,7 +77,7 @@ class MyDrawer extends StatelessWidget {
                     if(await canLaunchUrl(url)){
                       await launchUrl(url);
                     }
-                  }, icon: Image.asset("repo/github.png")),
+                  }, icon: Image.asset("repo/github.png", width: 24,)),
                   IconButton(onPressed: (){
                     launchUrl(Uri(
                       scheme: 'mailto',
@@ -92,10 +100,10 @@ class MyDrawer extends StatelessWidget {
 
 class AboutCode extends StatelessWidget {
   const AboutCode({
-    Key? key,
+    super.key,
     required this.title,
     required this.percent,
-  }) : super(key: key);
+  });
 
   final String title;
   final double percent;
@@ -108,7 +116,7 @@ class AboutCode extends StatelessWidget {
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(title),
-              Text((value * 100).toInt().toString() + "%")
+              Text("${(value * 100).toInt()}%")
             ],),
             const SizedBox(height: 5,),
             LinearProgressIndicator(
@@ -124,10 +132,10 @@ class AboutCode extends StatelessWidget {
 
 class AboutSkill extends StatelessWidget {
   const AboutSkill({
-    Key? key,
+    super.key,
     required this.title,
     required this.persent
-  }) : super(key: key);
+  });
 
   final String title;
   final double persent;
@@ -151,7 +159,7 @@ class AboutSkill extends StatelessWidget {
                     color: Colors.lightBlue,
                     backgroundColor: const Color(0xff242430),),
                   Center(
-                    child: Text((value * 100).toInt().toString() + "%", style: const TextStyle(color: Colors.white, fontSize: 20),),
+                    child: Text("${(value * 100).toInt()}%", style: const TextStyle(color: Colors.white, fontSize: 20),),
                   )
                 ],
               );
@@ -165,9 +173,7 @@ class AboutSkill extends StatelessWidget {
 }
 
 class AboutMe extends StatelessWidget {
-  const AboutMe({
-    Key? key,
-  }) : super(key: key);
+  const AboutMe({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -182,9 +188,15 @@ class AboutMe extends StatelessWidget {
             Text('fivebellhyun\'s Portfolio', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
           ]),
           Spacer(flex: 2,),
-          CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage("repo/my_profile.jpg"),),
+          ImageRenderer(
+            alt: '오종현 || fivebellhyun',
+            child: CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage(
+                AppImages.profile
+              ),
+            ),
+          ),
           Text("Jonghyun Oh", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
           Text("Flutter(Dart) developer", textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w200, height: 1.5),),
           Spacer(flex: 2,)

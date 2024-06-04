@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class DesktopPage3 extends StatelessWidget {
   const DesktopPage3({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

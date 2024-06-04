@@ -4,7 +4,7 @@ import 'package:taoss3932_web_site/Components/drawer.dart';
 import 'package:taoss3932_web_site/responsive.dart';
 
 class HomeScreen extends StatefulWidget{
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

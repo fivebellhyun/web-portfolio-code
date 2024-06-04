@@ -1,67 +1,151 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:taoss3932_web_site/Components/app_images.dart';
+import 'package:taoss3932_web_site/widget/d_shooting_star.dart';
+import 'package:taoss3932_web_site/widget/m_shooting_star.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DesktopPage0 extends StatelessWidget {
+class DesktopPage0 extends StatefulWidget {
   const DesktopPage0({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
+
+  @override
+  State<DesktopPage0> createState() => _DesktopPage0State();
+}
+
+class _DesktopPage0State extends State<DesktopPage0> with TickerProviderStateMixin {
+  AnimationController? controller1;
+  AnimationController? controller2;
+  AnimationController? controller3;
+  Animation? star1;
+  Animation? star2;
+  Animation? star3;
+
+  @override
+  void initState() {
+    super.initState();
+    controller1 = AnimationController(duration: const Duration(milliseconds: 4800), vsync: this)..repeat(reverse: false);
+    star1 = Tween(begin: const Offset(1.0, 0.0), end: const Offset(-1.0, 1.2)).animate(controller1!);
+
+    Future.delayed(const Duration(milliseconds: 800), (){
+      controller2 = AnimationController(duration: const Duration(milliseconds: 4800), vsync: this)..repeat(reverse: false);
+      star2 = Tween(begin: const Offset(0.9, -0.1), end: const Offset(-1.1, 0.9)).animate(controller2!);
+      setState(() {});
+    });
+    Future.delayed(const Duration(milliseconds: 1680), (){
+      controller3 = AnimationController(duration: const Duration(milliseconds: 4800), vsync: this)..repeat(reverse: false);
+      star3 = Tween(begin: const Offset(1.1, 0.1), end: const Offset(-0.9, 1.3)).animate(controller3!);
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller1?.dispose();
+    controller2?.dispose();
+    controller3?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Stack(
       children: [
-        Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Text("What I did.", style: TextStyle(fontSize: 17, color: Colors.black54),),
-          const SizedBox(height: 50,),
-          const Text("# 01", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black54),),
-          const SizedBox(height: 10,),
-          const Text("꿈의 필름", style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.black),),
-          const SizedBox(height: 30,),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 250),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
-              child: Image.asset("repo/dreamfilm.png", fit: BoxFit.cover,)),
-          ),
-          const SizedBox(height: 80,)
-        ]),
-
-        Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Spacer(flex: 55,),
-          const Text(
-          "[플랫폼] : Android, IOS\n\n"
-          "[타겟층] : 20~30대\n", style: TextStyle(fontSize: 17, color: Colors.black54),),
-          Container(
-            width: size.width - 1000,
-            alignment: Alignment.center,
-            child: const Text("[About] : 인공지능 루아가 분석해주는 꿈해몽 일기장인 '꿈의 필름'입니다. "
-            "사용자들이 간편하면서 동시에 섬세하게 기록할 수 있도록 구성하였으며, "
-            "이렇게 작성한 꿈을 바탕으로 인공지능이 분석해주는 스마트 꿈 일기장입니다. ", style: TextStyle(fontSize: 17, color: Colors.black54),),
-          ),
-          const Text("This project covers android, ios platforms with one code.\n", style: TextStyle(color: Colors.black54),),
-          const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            InkWell(
-              onTap: _launchDreamFilmIOSUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(CupertinoIcons.bag_fill, color: Colors.black54,),
-                Text("  Apple Store", style: TextStyle(color: Colors.black54, fontSize: 17),),
-              ],),
+        if(controller1 != null)
+        AnimatedBuilder(
+          animation: controller1!,
+          builder: (context, child) {
+            return Transform.translate(
+              offset: Offset(star1!.value.dx * MediaQuery.of(context).size.width, star1!.value.dy * MediaQuery.of(context).size.height),
+              child: CustomPaint(
+                painter: DStarPainter(),
+              ),
+            );
+          }
+        ),
+        if(controller2 != null)
+        AnimatedBuilder(
+          animation: controller2!,
+          builder: (context, child) {
+            return Transform.translate(
+              offset: Offset(star2!.value.dx * MediaQuery.of(context).size.width, star2!.value.dy * MediaQuery.of(context).size.height),
+              child: CustomPaint(
+                painter: DStarPainter(),
+              ),
+            );
+          }
+        ),
+        if(controller3 != null)
+        AnimatedBuilder(
+          animation: controller3!,
+          builder: (context, child) {
+            return Transform.translate(
+              offset: Offset(star3!.value.dx * MediaQuery.of(context).size.width, star3!.value.dy * MediaQuery.of(context).size.height),
+              child: CustomPaint(
+                painter: DStarPainter(),
+              ),
+            );
+          }
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center, 
+              children: [
+                const Text("What I did.", style: TextStyle(fontSize: 17, color: Colors.white60),),
+                const SizedBox(height: 50,),
+                const Text("# 01", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white60),),
+                const SizedBox(height: 10,),
+                const Text("꿈의 필름", style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.white),),
+                const SizedBox(height: 30,),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 250),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.asset(AppImages.dreamFilmIcon, fit: BoxFit.cover,)),
+                ),
+                const SizedBox(height: 80,)
+              ]
             ),
-            InkWell(
-              onTap: _launchDreamFilmAPKUrl,
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Icon(Icons.shop, color: Colors.black54,),
-                Text("  Play Store", style: TextStyle(color: Colors.black54, fontSize: 17),),
-              ],),
-            ),
-          ]),
-          const Spacer(flex: 45,)
-        ],),
+        
+            Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Spacer(flex: 55,),
+              const Text(
+              "[플랫폼] : Android, IOS\n\n"
+              "[타겟층] : 20~30대\n", style: TextStyle(fontSize: 17, color: Colors.white60),),
+              Container(
+                width: size.width - 1000,
+                alignment: Alignment.center,
+                child: const Text("[About] : 인공지능 루아가 분석해주는 꿈해몽 일기장인 '꿈의 필름'입니다. "
+                "사용자들이 간편하면서 동시에 섬세하게 기록할 수 있도록 구성하였으며, "
+                "작성한 꿈을 바탕으로 인공지능이 분석 & 해몽해주는 스마트 꿈 일기장입니다. ", style: TextStyle(fontSize: 17, color: Colors.white60),),
+              ),
+              const Text("This project covers android, ios platforms with one code.\n", style: TextStyle(color: Colors.white60),),
+              const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                InkWell(
+                  onTap: _launchDreamFilmIOSUrl,
+                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Icon(CupertinoIcons.bag_fill, color: Colors.white60,),
+                    Text("  Apple Store", style: TextStyle(color: Colors.white60, fontSize: 17),),
+                  ],),
+                ),
+                InkWell(
+                  onTap: _launchDreamFilmAPKUrl,
+                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Icon(Icons.shop, color: Colors.white60,),
+                    Text("  Play Store", style: TextStyle(color: Colors.white60, fontSize: 17),),
+                  ],),
+                ),
+              ]),
+              const Spacer(flex: 45,)
+            ],),
+          ],
+        ),
       ],
     );
   }

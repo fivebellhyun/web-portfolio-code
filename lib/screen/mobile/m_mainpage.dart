@@ -8,9 +8,9 @@ import 'package:taoss3932_web_site/screen/mobile/m_page3.dart';
 
 class MobileMainPage extends StatefulWidget {
   const MobileMainPage({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   final Size size;
 
@@ -24,11 +24,11 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
 
   changeColor(int getcolor) {
     if (getcolor == 0) {
-      return const Color(0xFFBCA5E8);
+      return const Color(0xFF080B14);
     } else if (getcolor == 1) {
       return const Color.fromARGB(255, 253, 249, 239);
     } else if (getcolor == 2) {
-      return const Color.fromARGB(255, 128, 171, 188);
+      return const Color.fromARGB(255, 190, 237, 255);
     } else if (getcolor == 3) {
       return const Color.fromARGB(255, 161, 158, 208);
     } else {

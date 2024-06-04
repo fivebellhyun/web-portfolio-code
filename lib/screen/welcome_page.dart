@@ -8,7 +8,7 @@ import 'package:taoss3932_web_site/screen/mobile/m_mainpage.dart';
 import 'package:taoss3932_web_site/screen/web/d_mainpage.dart';
 
 class WelcomePage extends StatefulWidget{
-  const WelcomePage({Key? key}) : super(key: key);
+  const WelcomePage({super.key});
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -26,7 +26,7 @@ class _WelcomePageState extends State<WelcomePage> {
     double blur = isPressed ? 5.0 : 30.0;
     
     return Scaffold(
-      drawer: const Drawer(child: MyDrawer()),
+      drawer: Responsive.isDesktop(context) ? null : const Drawer(child: MyDrawer()),
       body: Stack(
         children: [
           Row(children: [
@@ -48,7 +48,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               )),
           ],),
-          Builder(builder: (context) => IconButton(onPressed: (){
+          Responsive.isDesktop(context) ? const SizedBox.shrink() : Builder(builder: (context) => IconButton(onPressed: (){
             Scaffold.of(context).openDrawer();
           }, icon: const Icon(Icons.menu, color: Colors.black, size: 30,)))
         ],
@@ -58,39 +58,42 @@ class _WelcomePageState extends State<WelcomePage> {
 
   Container aboutWelcome(BuildContext context, Size size, double blur, Offset distanse) {
     return Container(
-              color: const Color.fromARGB(255, 253, 249, 239),
-              child: Column(children: [
-                SizedBox(
-                  height: size.height,
-                  child: Center(
-                    child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                      SizedBox(width: size.width*0.1,),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text('안녕하세요.', style: TextStyle(fontSize: 17),),
-                          SizedBox(
-                            height: 83,
-                            child: AnimatedTextKit(animatedTexts: [
-                              TypewriterAnimatedText("부드럽게. \n그러나 강렬하게.", textStyle: const TextStyle(color: Colors.black, fontSize: 30), speed: const Duration(milliseconds: 150)),
-                              TypewriterAnimatedText("아름답게. \n그리고 세련되게.", textStyle: const TextStyle(color: Colors.black, fontSize: 30), speed: const Duration(milliseconds: 150)),
-                              TypewriterAnimatedText("쫀득하게. \n그러나 유연하게.", textStyle: const TextStyle(color: Colors.black, fontSize: 30), speed: const Duration(milliseconds: 150)),
-                            ]),
-                          ),
-                          const Text('디자인하는 Flutter 개발자 오종현입니다.', style: TextStyle(fontSize: 17),),
-                          const SizedBox(height: 50,),
-                          Responsive.isMobile(context) ? goBtn(context, blur, distanse) : const SizedBox.shrink(),
-                        ],
-                      ),
-                      const Spacer(),
-                      !Responsive.isMobile(context) ? goBtn(context, blur, distanse) : const SizedBox.shrink(),
-                      const Spacer()
-                    ]),
+      color: const Color.fromARGB(255, 253, 249, 239),
+      child: Column(children: [
+        SizedBox(
+          height: size.height,
+          child: Center(
+            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+              SizedBox(width: size.width*0.1,),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('안녕하세요.', style: TextStyle(fontSize: 17),),
+                  SizedBox(
+                    height: 83,
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      animatedTexts: [
+                        TypewriterAnimatedText("부드럽게. \n그러나 강렬하게.", textStyle: const TextStyle(color: Colors.black, fontSize: 30), speed: const Duration(milliseconds: 150)),
+                        TypewriterAnimatedText("아름답게. \n그리고 세련되게.", textStyle: const TextStyle(color: Colors.black, fontSize: 30), speed: const Duration(milliseconds: 150)),
+                        TypewriterAnimatedText("쫀득하게. \n그러나 유연하게.", textStyle: const TextStyle(color: Colors.black, fontSize: 30), speed: const Duration(milliseconds: 150)),
+                      ]
+                    ),
                   ),
-                ),
-              ]),
-      );
+                  const Text('디자인하는 Flutter 개발자 오종현입니다.', style: TextStyle(fontSize: 17),),
+                  const SizedBox(height: 50,),
+                  Responsive.isMobile(context) ? goBtn(context, blur, distanse) : const SizedBox.shrink(),
+                ],
+              ),
+              const Spacer(),
+              !Responsive.isMobile(context) ? goBtn(context, blur, distanse) : const SizedBox.shrink(),
+              const Spacer()
+            ]),
+          ),
+        ),
+      ]),
+    );
   }
 
   GestureDetector goBtn(BuildContext context, double blur, Offset distanse) {
@@ -101,15 +104,15 @@ class _WelcomePageState extends State<WelcomePage> {
         });
         _carouselController.nextPage(duration: const Duration(milliseconds: 3000), curve: Curves.fastLinearToSlowEaseIn);
       },
-      child: Listener(
-        onPointerUp: (_){
+      child: MouseRegion(
+        onEnter: (_){
           setState(() {
             isPressed = false;
           });
         },
-        onPointerDown: (_) {
+        onExit: (_) {
           setState(() {
-            isPressed = false;
+            isPressed = true;
           });
         },
         child: AnimatedContainer(

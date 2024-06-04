@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MobilePage1 extends StatelessWidget {
   const MobilePage1({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class MobilePage1 extends StatelessWidget {
 
         const Expanded(
           child: Text("대학생 전용 소개팅 플랫폼인 Garden Us입니다. "
-          "결제 시스템, 시즌 시스템, 매칭 시스템, 등을 구현하였습니다.  "),
+          "결제 시스템, 시즌 시스템, 매칭 시스템, 채팅 시스템 등을 구현하였습니다.  "),
         ),
       ],),
     ]);

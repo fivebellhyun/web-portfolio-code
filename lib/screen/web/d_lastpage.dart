@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DesktopLastPage extends StatefulWidget {
   const DesktopLastPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<DesktopLastPage> createState() => _DesktopLastPageState();
