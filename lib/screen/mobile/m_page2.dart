@@ -52,14 +52,14 @@ class MobilePage2 extends StatelessWidget {
                 onTap: _launchTop20Url,
                 child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Icon(CupertinoIcons.globe, color: Colors.black54,),
-                  Text("  Top 20 진출", style: TextStyle(color: Colors.black54),),
+                  Text("  Top 20 진출 영상", style: TextStyle(color: Colors.black54),),
                 ],),
               ),
             ]),
           ),
 
         const Expanded(
-          child: Text("Global Citizen & Flutter에서 공동주최하고 Google wallet이 sponsor한 세계 대회에서 11위 성적을 거두었습니다. "
+          child: Text("Global Citizen & Google Flutter에서 공동주최한 세계 대회에서 12위 성적을 거두었습니다. "
           "Flutter에서 새로이 선보인 Flame engine을 사용하여 6인용 realtime 2D 게임을 구현하였습니다. "
           "", style: TextStyle(color: Colors.black54),),
         ),

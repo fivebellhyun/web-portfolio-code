@@ -77,7 +77,16 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
                   width: _current == entry.key ? 10 : 5,
                   height: _current == entry.key ? 10 : 5,
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black.withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle, 
+                    color: _current != 0 
+                      ? Colors.black.withOpacity(
+                        _current == entry.key ? 0.9 : 0.4
+                      )
+                      : Colors.white.withOpacity(
+                        _current == entry.key ? 0.9 : 0.4
+                      )
+                  ),
                 ),
               );
             }).toList(),

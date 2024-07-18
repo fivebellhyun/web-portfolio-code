@@ -27,16 +27,16 @@ class MyDrawer extends StatelessWidget {
                 Text('Graduate', style: TextStyle(color: Colors.white),),
                 Text('마포고등학교(과학중점)')
               ],),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                const Text('Age', style: TextStyle(color: Colors.white),),
-                Text(
-                  '${
-                    DateTime.now().month >= 9 
-                      ? DateTime.now().year - 2003 
-                      : DateTime.now().year - 2004
-                    }(Korean age : ${DateTime.now().year - 2002})'
-                )
-              ],),
+              // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              //   const Text('Age', style: TextStyle(color: Colors.white),),
+              //   Text(
+              //     '${
+              //       DateTime.now().month >= 9 
+              //         ? DateTime.now().year - 2003 
+              //         : DateTime.now().year - 2004
+              //       }(Korean age : ${DateTime.now().year - 2002})'
+              //   )
+              // ],),
               const Divider(color: Color.fromARGB(255, 139, 140, 148),),
               const SizedBox(height: 10,),
               Container(alignment: Alignment.centerLeft, child: const Text('Skills', style: TextStyle(color: Colors.white))),

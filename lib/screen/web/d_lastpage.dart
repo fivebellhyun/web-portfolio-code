@@ -58,57 +58,59 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
               SizedBox(width: size.width*0.3,),
               GestureDetector(
                 onTap: _launchContactUrl,
-                onTapUp: (_){
-                  setState(() {
-                    glowing = false;
-                  });
-                },
-                onTapDown: (_){
-                  setState(() {
-                    glowing = true;
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 70),
-                  height: 48,
-                  width: 160,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    gradient: const LinearGradient(colors: [
-                      Colors.pinkAccent,
-                      Colors.indigoAccent
-                    ]),
-                    boxShadow: glowing ? [
-                      BoxShadow(
-                        color: Colors.pinkAccent.withOpacity(0.6),
-                        spreadRadius: 1.0,
-                        blurRadius: 16,
-                        offset: const Offset(-8, 0)
-                      ),
-                      BoxShadow(
-                        color: Colors.indigoAccent.withOpacity(0.6),
-                        spreadRadius: 1.0,
-                        blurRadius: 16,
-                        offset: const Offset(8, 0)
-                      ),
-                      BoxShadow(
-                        color: Colors.pinkAccent.withOpacity(0.2),
-                        spreadRadius: 16,
-                        blurRadius: 32,
-                        offset: const Offset(-8, 0)
-                      ),
-                      BoxShadow(
-                        color: Colors.indigoAccent.withOpacity(0.2),
-                        spreadRadius: 16,
-                        blurRadius: 32,
-                        offset: const Offset(8, 0)
-                      )
-                    ] : []
-                  ),
-                  child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Icon(Icons.shopping_bag_outlined, color: Colors.white,),
-                    Text("  프로젝트 의뢰하기", style: TextStyle(color: Colors.white),),
-                  ],),),
+                child: MouseRegion(
+                  onEnter: (_) {
+                    setState(() {
+                      glowing = true;
+                    });
+                  },
+                  onExit: (_) {
+                    setState(() {
+                      glowing = false;
+                    });
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 70),
+                    height: 48,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      gradient: const LinearGradient(colors: [
+                        Colors.pinkAccent,
+                        Colors.indigoAccent
+                      ]),
+                      boxShadow: glowing ? [
+                        BoxShadow(
+                          color: Colors.pinkAccent.withOpacity(0.6),
+                          spreadRadius: 1.0,
+                          blurRadius: 16,
+                          offset: const Offset(-8, 0)
+                        ),
+                        BoxShadow(
+                          color: Colors.indigoAccent.withOpacity(0.6),
+                          spreadRadius: 1.0,
+                          blurRadius: 16,
+                          offset: const Offset(8, 0)
+                        ),
+                        BoxShadow(
+                          color: Colors.pinkAccent.withOpacity(0.2),
+                          spreadRadius: 16,
+                          blurRadius: 32,
+                          offset: const Offset(-8, 0)
+                        ),
+                        BoxShadow(
+                          color: Colors.indigoAccent.withOpacity(0.2),
+                          spreadRadius: 16,
+                          blurRadius: 32,
+                          offset: const Offset(8, 0)
+                        )
+                      ] : []
+                    ),
+                    child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Icon(Icons.shopping_bag_outlined, color: Colors.white,),
+                      Text("  프로젝트 의뢰하기", style: TextStyle(color: Colors.white),),
+                    ],),),
+                ),
               ),
             ],
           ),

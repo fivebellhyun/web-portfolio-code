@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:taoss3932_web_site/Components/app_images.dart';
 import 'package:taoss3932_web_site/widget/d_shooting_star.dart';
-import 'package:taoss3932_web_site/widget/m_shooting_star.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DesktopPage0 extends StatefulWidget {

@@ -40,7 +40,7 @@ class DesktopPage2 extends StatelessWidget {
           Container(
             width: size.width - 1000,
             alignment: Alignment.center,
-            child: const Text("[About] : Global Citizen & Flutter에서 공동주최하고 Google wallet이 sponsor한 세계 대회에서 11위 성적을 거두었습니다. "
+            child: const Text("[About] : Global Citizen & Google Flutter에서 공동주최한 세계 대회에서 12위 성적을 거두었습니다. "
             "Flutter에서 새로이 선보인 Flame engine을 사용하여 6인용 realtime 2D 게임을 구현하였습니다.\n", style: TextStyle(color: Colors.black54, fontSize: 17),),
           ),
 
