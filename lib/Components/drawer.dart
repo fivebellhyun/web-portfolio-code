@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:seo_renderer/seo_renderer.dart';
-import 'package:taoss3932_web_site/Components/app_images.dart';
+import 'package:taoss3932_web_site/components/app_images.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -72,12 +73,18 @@ class MyDrawer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50)
                 ),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                  IconButton(onPressed: () async {
-                    Uri url = Uri.parse('https://github.com/fivebellhyun');
-                    if(await canLaunchUrl(url)){
-                      await launchUrl(url);
-                    }
-                  }, icon: Image.asset("repo/github.png", width: 24,)),
+                  IconButton(
+                    onPressed: () async {
+                      Uri url = Uri.parse('https://github.com/fivebellhyun');
+                      if(await canLaunchUrl(url)){
+                        await launchUrl(url);
+                      }
+                    }, icon: CachedNetworkImage(
+                      imageUrl: AppImages.github, 
+                      width: 24, 
+                      fit: BoxFit.fitWidth,
+                    )
+                  ),
                   IconButton(onPressed: (){
                     launchUrl(Uri(
                       scheme: 'mailto',
@@ -192,7 +199,7 @@ class AboutMe extends StatelessWidget {
             alt: '오종현 || fivebellhyun',
             child: CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage(
+              backgroundImage: CachedNetworkImageProvider(
                 AppImages.profile
               ),
             ),

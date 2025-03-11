@@ -66,7 +66,7 @@ class _MobileLastPageState extends State<MobileLastPage> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 70),
                 height: 48,
-                width: 160,
+                width: 240,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
                   gradient: const LinearGradient(colors: [
@@ -101,8 +101,8 @@ class _MobileLastPageState extends State<MobileLastPage> {
                   ] : []
                 ),
                 child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Icon(Icons.shopping_bag_outlined, color: Colors.white,),
-                  Text("  프로젝트 의뢰하기", style: TextStyle(color: Colors.white),),
+                  Text("전체 경력 확안하고 의뢰하기  ", style: TextStyle(color: Colors.white),),
+                  Icon(Icons.play_arrow_rounded, color: Colors.white,),
                 ],),),
             ),
           ),

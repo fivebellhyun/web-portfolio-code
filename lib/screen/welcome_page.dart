@@ -2,8 +2,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter/material.dart';
-import 'package:taoss3932_web_site/Components/drawer.dart';
-import 'package:taoss3932_web_site/responsive.dart';
+import 'package:taoss3932_web_site/components/drawer.dart';
+import 'package:taoss3932_web_site/helper/extensions/responsive.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_mainpage.dart';
 import 'package:taoss3932_web_site/screen/web/d_mainpage.dart';
 
@@ -17,7 +17,7 @@ class WelcomePage extends StatefulWidget{
 class _WelcomePageState extends State<WelcomePage> {
   bool isPressed = true;
 
-  final CarouselController _carouselController = CarouselController();
+  final CarouselSliderController _carouselController = CarouselSliderController();
 
   @override 
   Widget build(BuildContext context){
@@ -81,6 +81,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       ]
                     ),
                   ),
+                  const SizedBox(height: 4,),
                   const Text('디자인하는 Flutter 개발자 오종현입니다.', style: TextStyle(fontSize: 17),),
                   const SizedBox(height: 50,),
                   Responsive.isMobile(context) ? goBtn(context, blur, distanse) : const SizedBox.shrink(),

@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "fivebellhyun"
-  }
+    "default": "fivebellhyun",
+    "gsutil cors get gs://fivebellhyun.appspot.com": "fivebellhyun"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

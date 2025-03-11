@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_lastpage.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page1.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page2.dart';
-import 'package:taoss3932_web_site/screen/mobile/m_page0.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page3.dart';
+import 'package:taoss3932_web_site/screen/mobile/m_page0.dart';
+import 'package:taoss3932_web_site/screen/mobile/m_page4.dart';
 
 class MobileMainPage extends StatefulWidget {
   const MobileMainPage({
@@ -19,17 +20,19 @@ class MobileMainPage extends StatefulWidget {
 }
 
 class _MobilePastAndCommissionState extends State<MobileMainPage> {
-  final CarouselController _carouselController = CarouselController();
+  final CarouselSliderController _carouselController = CarouselSliderController();
   int _current = 0;
 
   changeColor(int getcolor) {
     if (getcolor == 0) {
       return const Color(0xFF080B14);
-    } else if (getcolor == 1) {
+    } else if(getcolor == 1) {
       return const Color.fromARGB(255, 253, 249, 239);
     } else if (getcolor == 2) {
-      return const Color.fromARGB(255, 190, 237, 255);
+      return const Color.fromARGB(255, 219, 237, 219);
     } else if (getcolor == 3) {
+      return const Color.fromARGB(255, 190, 237, 255);
+    } else if (getcolor == 4) {
       return const Color.fromARGB(255, 161, 158, 208);
     } else {
       return const Color.fromARGB(255, 213, 196, 196);
@@ -64,13 +67,14 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
                 MobilePage1(),
                 MobilePage2(),
                 MobilePage3(),
+                MobilePage4(),
                 MobileLastPage(),
               ],
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [1, 2, 3, 4, 5].asMap().entries.map((entry) {
+            children: [1, 2, 3, 4, 5, 6].asMap().entries.map((entry) {
               return GestureDetector(
                 onTap: () => _carouselController.animateToPage(entry.key),
                 child: Container(

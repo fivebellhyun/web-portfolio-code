@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:taoss3932_web_site/Components/app_images.dart';
+import 'package:taoss3932_web_site/components/app_images.dart';
 import 'package:taoss3932_web_site/widget/d_shooting_star.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -106,7 +107,7 @@ class _DesktopPage0State extends State<DesktopPage0> with TickerProviderStateMix
                   constraints: const BoxConstraints(maxWidth: 250),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(25),
-                    child: Image.asset(AppImages.dreamFilmIcon, fit: BoxFit.cover,)),
+                    child: CachedNetworkImage(imageUrl: AppImages.dreamFilmIcon, fit: BoxFit.cover,)),
                 ),
                 const SizedBox(height: 80,)
               ]

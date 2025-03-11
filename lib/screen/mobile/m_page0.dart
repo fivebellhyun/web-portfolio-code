@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:taoss3932_web_site/Components/app_images.dart';
+import 'package:taoss3932_web_site/components/app_images.dart';
 import 'package:taoss3932_web_site/widget/m_shooting_star.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -95,7 +96,7 @@ class _MobilePage0State extends State<MobilePage0> with TickerProviderStateMixin
               "What I did.",
               style: TextStyle(fontSize: 17, color: Colors.white60),
             ),
-            SizedBox(height: size.height / 14.3), //50
+            SizedBox(height: size.height / 71.5),
             const Text(
               "# 01",
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white60),
@@ -109,13 +110,14 @@ class _MobilePage0State extends State<MobilePage0> with TickerProviderStateMixin
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 500),
               child: ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Image.asset(
-                    AppImages.dreamFilmIcon,
-                    width: size.width / 3,
-                    height: size.width / 3,
-                    fit: BoxFit.cover,
-                  )),
+                borderRadius: BorderRadius.circular(25),
+                child: CachedNetworkImage(
+                  imageUrl: AppImages.dreamFilmIcon,
+                  width: size.width / 3,
+                  height: size.width / 3,
+                  fit: BoxFit.cover,
+                )
+              ),
             ),
             SizedBox(
               height: size.height / 24,
@@ -123,45 +125,53 @@ class _MobilePage0State extends State<MobilePage0> with TickerProviderStateMixin
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 200),
-                  child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    InkWell(
-                      onTap: _launchDreamFilmIOSUrl,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            CupertinoIcons.bag_fill,
-                            color: Colors.white60,
-                          ),
-                          Text(
-                            "  Apple Store",
-                            style: TextStyle(color: Colors.white60),
-                          ),
-                        ],
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 200),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start, 
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                      InkWell(
+                        onTap: _launchDreamFilmIOSUrl,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              CupertinoIcons.bag_fill,
+                              color: Colors.white60,
+                            ),
+                            Text(
+                              "  AppStore",
+                              style: TextStyle(color: Colors.white60),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: _launchDreamfilmAPKUrl,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.shop,
-                            color: Colors.white60,
-                          ),
-                          Text(
-                            "  Play Store",
-                            style: TextStyle(color: Colors.white60),
-                          ),
-                        ],
+                      InkWell(
+                        onTap: _launchDreamfilmAPKUrl,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.shop,
+                              color: Colors.white60,
+                            ),
+                            Text(
+                              "  PlayStore",
+                              style: TextStyle(color: Colors.white60),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ]),
+                    ]),
+                  ),
                 ),
                 const Expanded(
                   child: Text(
