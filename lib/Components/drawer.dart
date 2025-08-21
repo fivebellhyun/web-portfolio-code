@@ -22,11 +22,11 @@ class MyDrawer extends StatelessWidget {
             child: Column(children: [
               const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Attending', style: TextStyle(color: Colors.white),),
-                Text('성균관대학교(SKKU)')
+                Text('성균관대학교(SKKU)', style: TextStyle(color: Colors.white))
               ],),
               const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Graduate', style: TextStyle(color: Colors.white),),
-                Text('마포고등학교(과학중점)')
+                Text('마포고등학교(과학중점)', style: TextStyle(color: Colors.white))
               ],),
               // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               //   const Text('Age', style: TextStyle(color: Colors.white),),
@@ -122,7 +122,7 @@ class AboutCode extends StatelessWidget {
         return Column(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Text(title),
+              Text(title, style: const TextStyle(color: Colors.white)),
               Text("${(value * 100).toInt()}%")
             ],),
             const SizedBox(height: 5,),
@@ -192,7 +192,14 @@ class AboutMe extends StatelessWidget {
           SizedBox(height: 10,),
           Row(children: [
             SizedBox(width: 5,),
-            Text('fivebellhyun\'s Portfolio', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+            Text(
+              'fivebellhyun\'s Portfolio', 
+              style: TextStyle(
+                fontSize: 17, 
+                fontWeight: FontWeight.bold,
+                color: Colors.white
+              )
+            ),
           ]),
           Spacer(flex: 2,),
           ImageRenderer(
@@ -205,7 +212,15 @@ class AboutMe extends StatelessWidget {
             ),
           ),
           Text("Jonghyun Oh", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
-          Text("Flutter(Dart) developer", textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w200, height: 1.5),),
+          Text(
+            "Flutter(Dart) developer", 
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.w200, 
+              height: 1.5,
+              color: Colors.white
+            ),
+          ),
           Spacer(flex: 2,)
         ],),
       ),);

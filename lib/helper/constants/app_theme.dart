@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 abstract class Appcolors {
   static const secondary = Color(0xffFF8FA6);
   static const accent = Color(0xff86F0EA);
@@ -30,7 +29,7 @@ abstract class AppTheme{
   static ThemeData light() => ThemeData(
     brightness: Brightness.light,
     visualDensity: visualDensity,
-    fontFamily: 'malgun',
+    fontFamily: 'notosans',
     textTheme: const TextTheme().apply(bodyColor: Appcolors.textDark),
     scaffoldBackgroundColor: _LightColors.background,
     cardColor: _LightColors.card,
@@ -41,7 +40,7 @@ abstract class AppTheme{
   static ThemeData dark() => ThemeData(
     brightness: Brightness.dark,
     visualDensity: visualDensity,
-    fontFamily: 'malgun',
+    fontFamily: 'notosans',
     textTheme: const TextTheme().apply(bodyColor: Appcolors.textLight),
     scaffoldBackgroundColor: _DarkColors.background,
     cardColor: _DarkColors.card,

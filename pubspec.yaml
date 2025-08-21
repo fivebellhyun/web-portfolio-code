@@ -30,6 +30,6 @@ flutter:
   uses-material-design: true
   
   fonts:
-    - family: malgun
+    - family: notosans
       fonts:
-        - asset: assets/fonts/malgun.ttf
+        - asset: assets/fonts/notosans.ttf
