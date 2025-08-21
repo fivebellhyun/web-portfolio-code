@@ -54,7 +54,7 @@ class MyDrawer extends StatelessWidget {
               ),
               const Divider(color: Color.fromARGB(255, 139, 140, 148),),
               const SizedBox(height: 10,),
-              Container(alignment: Alignment.centerLeft, child: const Text('Languages', style: TextStyle(color: Colors.white))),
+              Container(alignment: Alignment.centerLeft, child: const Text('Tech Stack', style: TextStyle(color: Colors.white))),
               const SizedBox(height: 10,),
               const AboutCode(title: "Flutter_(android,ios,web)", percent: 0.95,),
               const SizedBox(height: 15,),

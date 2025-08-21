@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.6
   url_launcher: ^6.1.6
-  google_fonts: ^5.1.0
   carousel_slider: ^5.0.0
   animated_text_kit: ^4.2.1
   cached_network_image: ^3.4.1
@@ -29,3 +28,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  fonts:
+    - family: malgun
+      fonts:
+        - asset: assets/fonts/malgun.ttf

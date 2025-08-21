@@ -101,7 +101,7 @@ class _MobileLastPageState extends State<MobileLastPage> {
                   ] : []
                 ),
                 child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text("전체 경력 확안하고 의뢰하기  ", style: TextStyle(color: Colors.white),),
+                  Text("전체 경력 확인하고 의뢰하기  ", style: TextStyle(color: Colors.white),),
                   Icon(Icons.play_arrow_rounded, color: Colors.white,),
                 ],),),
             ),

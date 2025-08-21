@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 abstract class Appcolors {
   static const secondary = Color(0xffFF8FA6);
@@ -31,7 +30,8 @@ abstract class AppTheme{
   static ThemeData light() => ThemeData(
     brightness: Brightness.light,
     visualDensity: visualDensity,
-    textTheme: GoogleFonts.mulishTextTheme().apply(bodyColor: Appcolors.textDark),
+    fontFamily: 'malgun',
+    textTheme: const TextTheme().apply(bodyColor: Appcolors.textDark),
     scaffoldBackgroundColor: _LightColors.background,
     cardColor: _LightColors.card,
     primaryTextTheme: const TextTheme(titleLarge: TextStyle(color: Appcolors.textDark)),
@@ -41,7 +41,8 @@ abstract class AppTheme{
   static ThemeData dark() => ThemeData(
     brightness: Brightness.dark,
     visualDensity: visualDensity,
-    textTheme: GoogleFonts.interTextTheme().apply(bodyColor: Appcolors.textLight),
+    fontFamily: 'malgun',
+    textTheme: const TextTheme().apply(bodyColor: Appcolors.textLight),
     scaffoldBackgroundColor: _DarkColors.background,
     cardColor: _DarkColors.card,
     primaryTextTheme: const TextTheme(titleLarge: TextStyle(color: Appcolors.textLight)),

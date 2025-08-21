@@ -136,12 +136,9 @@ class _MobilePage0State extends State<MobilePage0> with TickerProviderStateMixin
                       InkWell(
                         onTap: _launchDreamFilmIOSUrl,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SizedBox(
-                              width: 10,
-                            ),
                             Icon(
                               CupertinoIcons.bag_fill,
                               color: Colors.white60,
