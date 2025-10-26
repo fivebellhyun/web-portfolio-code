@@ -16,9 +16,7 @@ dependencies:
   carousel_slider: ^5.0.0
   animated_text_kit: ^4.2.1
   cached_network_image: ^3.4.1
-
-  #web
-  seo_renderer: ^0.6.0 #seo rendering
+  flutter_svg: ^2.2.1
 
 dev_dependencies:
   flutter_test:

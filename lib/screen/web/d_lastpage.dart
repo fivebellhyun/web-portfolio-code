@@ -17,6 +17,7 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    print(size.width);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,7 +56,9 @@ class _DesktopLastPageState extends State<DesktopLastPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(width: size.width*0.3,),
+              SizedBox(
+                width: size.width < 1280 ? 100 : size.width * 0.3
+              ),
               GestureDetector(
                 onTap: _launchContactUrl,
                 child: MouseRegion(

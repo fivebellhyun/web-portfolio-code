@@ -32,7 +32,7 @@ class DesktopPage4 extends StatelessWidget {
           ),
           const Text(
             "100k Downloads",
-            style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           const SizedBox(
             height: 30,
@@ -44,6 +44,7 @@ class DesktopPage4 extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: AppImages.myDownload,
                   fit: BoxFit.cover,
+                  width: size.width / 3,
                 )),
           ),
           const SizedBox(
@@ -58,7 +59,7 @@ class DesktopPage4 extends StatelessWidget {
               flex: 55,
             ),
             SizedBox(
-              width: size.width - 1000,
+              width: size.width - 1000 < 300 ? 300 : size.width - 1000,
               child: const Text(
                 "준대형 사이즈의 앱을 제작하고 3년간 운영함으로써 남다른 경험을 축적하였습니다. "
                 "평점 관리, 마케팅 전략, Admob cpc 관리, 상위 노출 전략 등 다양한 전략과 방법을 통해 단기간에 성장할 수 있었습니다.",

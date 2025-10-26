@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:taoss3932_web_site/components/app_images.dart';
 import 'package:taoss3932_web_site/widget/m_shooting_star.dart';
@@ -133,23 +132,23 @@ class _MobilePage0State extends State<MobilePage0> with TickerProviderStateMixin
                       crossAxisAlignment: CrossAxisAlignment.start, 
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                      InkWell(
-                        onTap: _launchDreamFilmIOSUrl,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              CupertinoIcons.bag_fill,
-                              color: Colors.white60,
-                            ),
-                            Text(
-                              "  AppStore",
-                              style: TextStyle(color: Colors.white60),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // InkWell(
+                      //   onTap: _launchDreamFilmIOSUrl,
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.start,
+                      //     mainAxisSize: MainAxisSize.min,
+                      //     children: [
+                      //       Icon(
+                      //         CupertinoIcons.bag_fill,
+                      //         color: Colors.white60,
+                      //       ),
+                      //       Text(
+                      //         "  AppStore",
+                      //         style: TextStyle(color: Colors.white60),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       InkWell(
                         onTap: _launchDreamfilmAPKUrl,
                         child: Row(

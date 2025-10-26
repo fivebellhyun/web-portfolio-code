@@ -28,7 +28,12 @@ class DesktopPage3 extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 500),
             child: ClipRRect(
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
-              child: CachedNetworkImage(imageUrl: AppImages.globalChallenge, fit: BoxFit.cover,)),
+              child: CachedNetworkImage(
+                imageUrl: AppImages.globalChallenge, 
+                fit: BoxFit.cover,
+                width: size.width / 3,
+              )
+            ),
           ),
           const SizedBox(height: 80,)
         ]),
@@ -39,7 +44,7 @@ class DesktopPage3 extends StatelessWidget {
           "[플랫폼] : Web, Android, IOS\n\n"
           "[순위] : Top 20\n", style: TextStyle(color: Colors.black54, fontSize: 17),),
           Container(
-            width: size.width - 1000,
+            width: size.width - 1000 < 280 ? 280 : size.width - 1000,
             alignment: Alignment.center,
             child: const Text("[About] : Global Citizen & Google Flutter에서 공동주최한 세계 대회에서 12위 성적을 거두었습니다. "
             "Flutter에서 새로이 선보인 Flame engine을 사용하여 6인용 realtime 2D 게임을 구현하였습니다.\n", style: TextStyle(color: Colors.black54, fontSize: 17),),

@@ -22,13 +22,18 @@ class DesktopPage2 extends StatelessWidget {
           const SizedBox(height: 50,),
           const Text("# 03", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black),),
           const SizedBox(height: 10,),
-          const Text("Garden Us", style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.black),),
+          const Text("Garden Us", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black),),
           const SizedBox(height: 30,),
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 500),
             child: ClipRRect(
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(25), bottomRight: Radius.circular(25)),
-              child: CachedNetworkImage(imageUrl: AppImages.clubsandwich, fit: BoxFit.cover,)),
+              child: CachedNetworkImage(
+                imageUrl: AppImages.clubsandwich, 
+                fit: BoxFit.cover,
+                width: size.width / 3,
+              )
+            ),
           ),
           const SizedBox(height: 80,)
         ]),
@@ -38,13 +43,12 @@ class DesktopPage2 extends StatelessWidget {
           const Text("[플랫폼] : Web, Android, IOS\n\n"
           "[타겟층] : 대학생\n", style: TextStyle(fontSize: 17),),
           Container(
-            width: size.width - 1000,
+            width: size.width - 1000 < 300 ? 300 : size.width - 1000,
             alignment: Alignment.center,
             child: const Text("[About] : 대학생 전용 소개팅 플랫폼인 Garden Us입니다. "
             "결제 시스템, 시즌 시스템, 매칭 시스템, 채팅 시스템 등을 구현하였습니다.  "
             "모바일, PC, 등 어느 플랫폼에서나 동일하게 쾌적한 서비스를 이용할 수 있도록 고도화하였습니다.", style: TextStyle(fontSize: 17),),
           ),
-          const Text("This project covers web, android, ios platforms with one code.\n"),
 
           const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             InkWell(

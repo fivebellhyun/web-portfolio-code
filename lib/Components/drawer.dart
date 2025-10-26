@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:seo_renderer/seo_renderer.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:taoss3932_web_site/components/app_images.dart';
+import 'package:taoss3932_web_site/components/app_svgs.dart';
+import 'package:taoss3932_web_site/helper/constants/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -22,11 +24,11 @@ class MyDrawer extends StatelessWidget {
             child: Column(children: [
               const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Attending', style: TextStyle(color: Colors.white),),
-                Text('성균관대학교(SKKU)', style: TextStyle(color: Colors.white))
+                Text('성균관대학교(SKKU)', style: TextStyle(color: Colors.white70))
               ],),
               const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text('Graduate', style: TextStyle(color: Colors.white),),
-                Text('마포고등학교(과학중점)', style: TextStyle(color: Colors.white))
+                Text('마포고등학교(과학중점)', style: TextStyle(color: Colors.white70))
               ],),
               // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               //   const Text('Age', style: TextStyle(color: Colors.white),),
@@ -79,20 +81,39 @@ class MyDrawer extends StatelessWidget {
                       if(await canLaunchUrl(url)){
                         await launchUrl(url);
                       }
-                    }, icon: CachedNetworkImage(
-                      imageUrl: AppImages.github, 
-                      width: 24, 
+                    },
+                    icon: SvgPicture.network(
+                      AppSVGs.github,
+                      width: 24,
                       fit: BoxFit.fitWidth,
+                      colorFilter: const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
                     )
                   ),
-                  IconButton(onPressed: (){
-                    launchUrl(Uri(
-                      scheme: 'mailto',
-                      path: 'taoss3932@gmail.com',
-                      query: encodeQueryParameters(<String, String>{
-                      })
-                    ));
-                  }, icon: const Icon(Icons.email))
+                  IconButton(
+                    onPressed: () async {
+                      Uri url = Uri.parse('https://www.linkedin.com/in/fivebellhyun');
+                      if(await canLaunchUrl(url)){
+                        await launchUrl(url);
+                      }
+                    },
+                    icon: SvgPicture.network(
+                      AppSVGs.linkedin,
+                      width: 24,
+                      fit: BoxFit.fitWidth,
+                      colorFilter: const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
+                    )
+                  ),
+                  IconButton(
+                    onPressed: (){
+                      launchUrl(Uri(
+                        scheme: 'mailto',
+                        path: 'taoss3932@gmail.com',
+                        query: encodeQueryParameters(<String, String>{
+                        })
+                      ));
+                    }, 
+                    icon: const Icon(Icons.email)
+                  ),
                 ]),
               ),
               const SizedBox(height: 50,)
@@ -122,8 +143,8 @@ class AboutCode extends StatelessWidget {
         return Column(
           children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Text(title, style: const TextStyle(color: Colors.white)),
-              Text("${(value * 100).toInt()}%")
+              Text(title, style: const TextStyle(color: Colors.white70)),
+              Text("${(value * 100).toInt()}%", style: const TextStyle(color: Colors.white70),)
             ],),
             const SizedBox(height: 5,),
             LinearProgressIndicator(
@@ -197,18 +218,15 @@ class AboutMe extends StatelessWidget {
               style: TextStyle(
                 fontSize: 17, 
                 fontWeight: FontWeight.bold,
-                color: Colors.white
+                color: Colors.white70
               )
             ),
           ]),
           Spacer(flex: 2,),
-          ImageRenderer(
-            alt: '오종현 || fivebellhyun',
-            child: CircleAvatar(
-              radius: 50,
-              backgroundImage: CachedNetworkImageProvider(
-                AppImages.profile
-              ),
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: CachedNetworkImageProvider(
+              AppImages.profile
             ),
           ),
           Text("Jonghyun Oh", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
@@ -218,7 +236,7 @@ class AboutMe extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w200, 
               height: 1.5,
-              color: Colors.white
+              color: Colors.white70
             ),
           ),
           Spacer(flex: 2,)

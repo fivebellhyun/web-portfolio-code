@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:taoss3932_web_site/components/app_images.dart';
 import 'package:taoss3932_web_site/widget/d_shooting_star.dart';
@@ -101,7 +100,7 @@ class _DesktopPage0State extends State<DesktopPage0> with TickerProviderStateMix
                 const SizedBox(height: 50,),
                 const Text("# 01", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white60),),
                 const SizedBox(height: 10,),
-                const Text("꿈의 필름", style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold, color: Colors.white),),
+                const Text("꿈의 필름", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),),
                 const SizedBox(height: 30,),
                 ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 250),
@@ -119,7 +118,7 @@ class _DesktopPage0State extends State<DesktopPage0> with TickerProviderStateMix
               "[플랫폼] : Android, IOS\n\n"
               "[타겟층] : 20~30대\n", style: TextStyle(fontSize: 17, color: Colors.white60),),
               Container(
-                width: size.width - 1000,
+                width: size.width - 1000 < 380 ? 380 : size.width - 1000,
                 alignment: Alignment.center,
                 child: const Text("[About] : 인공지능 루아가 분석해주는 꿈해몽 일기장인 '꿈의 필름'입니다. "
                 "사용자들이 간편하면서 동시에 섬세하게 기록할 수 있도록 구성하였으며, "
@@ -127,13 +126,13 @@ class _DesktopPage0State extends State<DesktopPage0> with TickerProviderStateMix
               ),
               const Text("This project covers android, ios platforms with one code.\n", style: TextStyle(color: Colors.white60),),
               const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                InkWell(
-                  onTap: _launchDreamFilmIOSUrl,
-                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Icon(CupertinoIcons.bag_fill, color: Colors.white60,),
-                    Text("  Apple Store", style: TextStyle(color: Colors.white60, fontSize: 17),),
-                  ],),
-                ),
+                // InkWell(
+                //   onTap: _launchDreamFilmIOSUrl,
+                //   child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                //     Icon(CupertinoIcons.bag_fill, color: Colors.white60,),
+                //     Text("  Apple Store", style: TextStyle(color: Colors.white60, fontSize: 17),),
+                //   ],),
+                // ),
                 InkWell(
                   onTap: _launchDreamFilmAPKUrl,
                   child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
