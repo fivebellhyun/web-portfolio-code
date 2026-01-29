@@ -23,11 +23,11 @@ class MyDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Column(children: [
               const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('Attending', style: TextStyle(color: Colors.white),),
+                Text('Graduated', style: TextStyle(color: Colors.white),),
                 Text('성균관대학교(SKKU)', style: TextStyle(color: Colors.white70))
               ],),
               const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text('Graduate', style: TextStyle(color: Colors.white),),
+                Text('  ', style: TextStyle(color: Colors.white),),
                 Text('마포고등학교(과학중점)', style: TextStyle(color: Colors.white70))
               ],),
               // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
