@@ -1,0 +1,34 @@
+{
+    "name": "오종현 | Jonghyun Oh",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "오종현 | Jonghyun Oh",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon.jpeg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+        },
+        {
+            "src": "icons/Icon.jpeg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+        },
+        {
+            "src": "icons/Icon.jpeg",
+            "sizes": "512x512",
+            "type": "image/jpg",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon.jpeg",
+            "sizes": "512x512",
+            "type": "image/jpg",
+            "purpose": "maskable"
+        }
+    ]
+}
