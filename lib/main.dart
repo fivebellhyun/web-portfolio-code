@@ -16,11 +16,14 @@ class MyApp extends StatelessWidget{
   @override 
   Widget build(BuildContext context){
     precacheImage(const CachedNetworkImageProvider(AppImages.clubsandwich), context);
+    precacheImage(const CachedNetworkImageProvider(AppImages.mobileSimsull), context);
     precacheImage(const CachedNetworkImageProvider(AppImages.dreamFilmIcon), context);
     precacheImage(const CachedNetworkImageProvider(AppImages.myDownload), context);
     precacheImage(const CachedNetworkImageProvider(AppImages.globalChallenge), context);
     precacheImage(const CachedNetworkImageProvider(AppImages.profile), context);
     precacheImage(const CachedNetworkImageProvider(AppImages.blisEdu), context);
+    precacheImage(const CachedNetworkImageProvider(AppImages.ganseogu), context);
+    precacheImage(const CachedNetworkImageProvider(AppImages.seongNam), context);
 
     return MaterialApp(
       color: Colors.black,

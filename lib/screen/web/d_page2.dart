@@ -52,7 +52,7 @@ class DesktopPage2 extends StatelessWidget {
             "대규모 인원이 참여하는 라이브 세미나에서도 안정적인 실시간 통신 환경을 구축하였습니다.", style: TextStyle(fontSize: 17),),
           ),
           const Text(
-            "\n[주요 레퍼런스]",
+            "\n[작업물 적용 사례]",
             style: TextStyle(
               fontSize: 14, 
             )
@@ -75,7 +75,7 @@ class DesktopPage2 extends StatelessWidget {
               _showEnlargedImage(context, AppImages.lotte);
             },
             child: const Text(
-              "롯데 GRS: 조직력 강화 팀빌딩 트레이닝",
+              "롯데 GRS: 팀빌딩 트레이닝",
               style: TextStyle(
                 decoration: TextDecoration.underline,
                 fontSize: 14, 

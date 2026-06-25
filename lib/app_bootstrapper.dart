@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:taoss3932_web_site/main.dart';
 
-import 'dart:html';
+import 'package:web/web.dart' as web;
 
 class AppBootstrapper {
   const AppBootstrapper._();
@@ -14,7 +14,10 @@ class AppBootstrapper {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    querySelector("#loading-screen")?.style.display = 'none';
+    final loadingScreen = web.document.querySelector('.loading-screen') as web.HTMLElement?;
+    if (loadingScreen != null) {
+      loadingScreen.style.display = 'none';
+    }
 
     runApp(const MyApp());
   }
