@@ -127,7 +127,7 @@ Future<void> _launchKakaoUrl() async {
 }
 
 Future<void> _launchContactUrl() async {
-  if (!await launchUrl(Uri.parse('https://kmong.com/gig/487571'))) {
-    throw 'Could not launch https://kmong.com/gig/487571';
+  if (!await launchUrl(Uri.parse('https://www.linkedin.com/in/fivebellhyun'))) {
+    throw 'Could not launch https://www.linkedin.com/in/fivebellhyun';
   }
 }

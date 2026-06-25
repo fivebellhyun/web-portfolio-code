@@ -96,7 +96,7 @@ Future<void> _launchTop20Url() async {
 }
 
 Future<void> _launchWebUrl() async {
-  if (!await launchUrl(Uri.parse('https://flutter.dev/global-gamers'))) {
-    throw 'Could not launch https://flutter.dev/global-gamers';
+  if (!await launchUrl(Uri.parse('https://globalgamers.devpost.com/'))) {
+    throw 'Could not launch https://globalgamers.devpost.com/';
   }
 }
