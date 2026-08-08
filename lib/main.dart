@@ -10,21 +10,50 @@ Future<void> main() async {
   await AppBootstrapper.init(runApp: runApp);
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  @override 
-  Widget build(BuildContext context){
-    precacheImage(const CachedNetworkImageProvider(AppImages.clubsandwich), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.mobileSimsull), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.dreamFilmIcon), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.myDownload), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.globalChallenge), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.profile), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.blisEdu), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.ganseogu), context);
-    precacheImage(const CachedNetworkImageProvider(AppImages.seongNam), context);
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  bool _precached = false;
+
+  /// 첫 프레임이 그려진 뒤에, 실제로 먼저 보게 되는 순서대로 하나씩 캐시로드. 초기 렌더와 경합하지 x
+  static const _warmup = <String>[
+    AppImages.dreamFilmIcon, // page 0
+    AppImages.blisEdu, // page 1
+    AppImages.clubsandwich, // page 2
+    AppImages.globalChallenge, // page 3
+    AppImages.myDownload, // page 4
+    AppImages.profile,
+    AppImages.mobileSimsull,
+    AppImages.ganseogu,
+    AppImages.seongNam,
+  ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_precached) return;
+    _precached = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) => _warmUpImages());
+  }
+
+  Future<void> _warmUpImages() async {
+    for (final url in _warmup) {
+      if (!mounted) return;
+      try {
+        await precacheImage(CachedNetworkImageProvider(url), context);
+      } catch (_) {
+        // 이미지 하나가 실패해도 Keep going
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       color: Colors.black,
       title: '오종현 | five bell hyun',

@@ -14,11 +14,16 @@ class AppBootstrapper {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    final loadingScreen = web.document.querySelector('.loading-screen') as web.HTMLElement?;
-    if (loadingScreen != null) {
-      loadingScreen.style.display = 'none';
-    }
 
     runApp(const MyApp());
+    //앱 로드 후 html 로딩 화면 지우기
+    WidgetsBinding.instance.addPostFrameCallback((_) => _markReady());
+  }
+
+  static void _markReady() {
+    final body = web.document.body;
+    if (body == null) return;
+    if (body.className.contains('flutter-ready')) return;
+    body.className = '${body.className} flutter-ready'.trim();
   }
 }

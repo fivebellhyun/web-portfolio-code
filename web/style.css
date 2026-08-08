@@ -1,74 +1,277 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
+/* ============================================================
+   문서 구조
+     #loader       100svh 전체 화면 로딩 화면 (문서 흐름)
+     #seo          색인용 정적 콘텐츠 — 스크롤하면 나옴, 항상 DOM에 남음
+     #flutter-app  position:fixed, z-index 10 — Flutter 마운트 호스트
+
+   로딩 중에는 body가 정상적으로 스크롤되므로 로딩 화면 아래의
+   텍스트 사이트에 실제로 도달할 수 있습니다.
+
+   Flutter 첫 프레임이 그려지면 Dart(AppBootstrapper)가 body 에
+   .flutter-ready 를 붙입니다. 그때 스크롤이 잠기고 로더가 숨겨집니다.
+   #flutter-app 이 z-index 10 으로 위에 있으므로 로더는 이미 가려진 상태입니다.
+   ============================================================ */
+
+:root {
+  --ink: #080B14;
+  --cream: #FDF9EF;
+  --line: rgba(8, 11, 20, 0.14);
+  --muted: #5c6068;
+  --accent-a: #FF4081;
+  --accent-b: #536DFE;
+  --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard",
+          "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
   margin: 0;
-  background-color: #e3e2e2;
+  padding: 0;
+  background: var(--cream);
 }
 
-.loading-screen {
-  width: 48px;
-  height: 48px;
-  margin: auto;
+/* Flutter가 화면을 넘겨받은 뒤에만 스크롤을 잠근다.
+   그 전에는 정적 콘텐츠를 실제로 읽고 스크롤할 수 있다. */
+body.flutter-ready { overflow: hidden; }
+
+/* ---------- 정적 콘텐츠 ---------- */
+
+#seo {
   position: relative;
+  z-index: 1;
+  font-family: var(--font);
+  color: var(--ink);
+  line-height: 1.75;
+  -webkit-text-size-adjust: 100%;
 }
 
-.loading-screen:before {
-  content: '';
-  width: 48px;
-  height: 5px;
-  background: #03a8f43e;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  border-radius: 50%;
-  animation: shadow 0.5s linear infinite;
+#seo .hero {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14vh 24px 12vh;
 }
 
-.loading-screen:after {
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: #03A9F4;
-  position: absolute;
-  top: 0;
-  left: 0;
+#seo .eyebrow {
+  margin: 0 auto 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#seo h1 {
+  margin: 0 auto 24px;
+  font-size: clamp(26px, 4.4vw, 42px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+#seo .lede {
+  margin: 0 auto 28px;
+  font-size: 17px;
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+#seo .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+#seo .meta li {
+  padding: 5px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+#seo .work {
+  background: var(--tone);
+  color: var(--on-tone);
+  padding: 9vh 24px;
+}
+
+#seo .work > *,
+#seo .skills > *,
+#seo .contact > * {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#seo .num {
+  margin: 0 auto 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  opacity: 0.6;
+}
+
+#seo h2 {
+  margin: 0 auto 12px;
+  font-size: clamp(24px, 3.6vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+#seo h3 {
+  margin: 28px auto 10px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+#seo .spec {
+  margin: 0 auto 22px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+#seo p { word-break: keep-all; }
+
+#seo ul:not(.meta):not(.links) {
+  margin: 0 auto 8px;
+  padding-left: 20px;
+}
+
+#seo .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin: 26px auto 0;
+}
+
+#seo a {
+  color: inherit;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+#seo a:hover { text-decoration-thickness: 2px; }
+
+#seo .skills,
+#seo .contact {
+  padding: 9vh 24px;
+  background: var(--cream);
+}
+
+#seo .contact { background: #D5C4C4; }
+
+#seo .skills ul,
+#seo .contact ul {
+  padding-left: 20px;
+}
+
+#seo footer {
+  padding: 44px 24px 64px;
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  font-family: var(--font);
+  font-size: 14px;
+}
+
+#seo footer a { color: #fff; }
+
+/* ---------- Flutter 호스트 ---------- */
+
+#flutter-app {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  /* 비어 있는 동안에는 아래 정적 콘텐츠를 클릭/스크롤할 수 있게 통과시키고,
+     Flutter가 자식을 삽입하면 그 자식이 이벤트를 받는다. */
+  pointer-events: none;
+}
+
+#flutter-app > * { pointer-events: auto; }
+
+/* ---------- 전체 화면 로딩 화면 ---------- */
+
+#loader {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 24px calc(40px + env(safe-area-inset-bottom));
+  background: var(--cream);
+  font-family: var(--font);
+  text-align: center;
+}
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  margin: auto;
+}
+
+.loader-cube {
+  width: 30px;
+  height: 30px;
   border-radius: 4px;
-  animation: jump 0.5s linear infinite;
+  background: var(--accent-b);
+  animation: jump 0.6s linear infinite;
 }
+
+.loader-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+
+.loader-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  opacity: 0.62;
+  animation: nudge 2.2s ease-in-out infinite;
+}
+
+body.flutter-ready #loader { visibility: hidden; }
+/* 가려진 뒤에도 애니메이션이 계속 도는 것 막기. */
+body.flutter-ready #loader * { animation: none; }
 
 @keyframes jump {
-  15% {
-    border-bottom-right-radius: 3px;
-  }
-
-  25% {
-    transform: translateY(9px) rotate(22.5deg);
-  }
-
-  50% {
-    transform: translateY(18px) scale(1, .9) rotate(45deg);
-    border-bottom-right-radius: 40px;
-  }
-
-  75% {
-    transform: translateY(9px) rotate(67.5deg);
-  }
-
-  100% {
-    transform: translateY(0) rotate(90deg);
-  }
+  25%  { transform: translateY(-9px) rotate(22.5deg); }
+  50%  { transform: translateY(0) scale(1, 0.92) rotate(45deg); border-bottom-right-radius: 22px; }
+  75%  { transform: translateY(-9px) rotate(67.5deg); }
+  100% { transform: translateY(0) rotate(90deg); }
 }
 
-@keyframes shadow {
-
-  0%,
-    100% {
-    transform: scale(1, 1);
-  }
-
-  50% {
-    transform: scale(1.2, 1);
-  }
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-cube,
+  .loader-scroll { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+:focus-visible { outline: 2px solid var(--accent-b); outline-offset: 2px; }

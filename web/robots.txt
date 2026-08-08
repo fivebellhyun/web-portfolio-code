@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# 네이버 검색 로봇
+User-agent: Yeti
+Allow: /
+
 Sitemap: https://fivebellhyun.web.app/sitemap.xml
