@@ -7,6 +7,7 @@ import 'package:taoss3932_web_site/screen/mobile/m_page2.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page3.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page0.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page4.dart';
+import 'package:taoss3932_web_site/tools/wheel_page_navigator.dart';
 
 class MobileMainPage extends StatefulWidget {
   const MobileMainPage({
@@ -21,7 +22,21 @@ class MobileMainPage extends StatefulWidget {
 }
 
 class _MobilePastAndCommissionState extends State<MobileMainPage> {
+  static const List<Widget> _pages = [
+    MobilePage0(),
+    MobilePage1(),
+    MobilePage2(),
+    MobilePage3(),
+    MobilePage4(),
+    MobileLastPage(),
+  ];
+
   final CarouselSliderController _carouselController = CarouselSliderController();
+  late final WheelPageNavigator _navigator = WheelPageNavigator(
+    controller: _carouselController, 
+    pageCount: _pages.length
+  );
+
   int _current = 0;
 
   changeColor(int getcolor) {
@@ -46,19 +61,7 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
 
     return Listener(
       onPointerSignal: (pointerSignal) {
-        if (pointerSignal is PointerScrollEvent) {
-          if (pointerSignal.scrollDelta.dy > 0) {
-            // 아래로 스크롤
-            if (_current < 5) {
-              _carouselController.nextPage();
-            }
-          } else if (pointerSignal.scrollDelta.dy < 0) {
-            // 위로 스크롤
-            if (_current > 0) {
-              _carouselController.previousPage();
-            }
-          }
-        }
+        _navigator.handlePointerSignal(pointerSignal, _current);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 400),
@@ -67,26 +70,23 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
           children: [
             const SizedBox(width: 26),
             Expanded(
-              child: CarouselSlider(
-                carouselController: _carouselController,
-                options: CarouselOptions(
-                    height: size.height,
-                    viewportFraction: 1,
-                    scrollDirection: Axis.vertical,
-                    enableInfiniteScroll: false,
-                    onPageChanged: (index, _) {
-                      setState(() {
-                        _current = index;
-                      });
-                    }),
-                items: const [
-                  MobilePage0(),
-                  MobilePage1(),
-                  MobilePage2(),
-                  MobilePage3(),
-                  MobilePage4(),
-                  MobileLastPage(),
-                ],
+              child: GestureDetector(
+                onVerticalDragEnd: (details) => _navigator.handleDragEnd(details, _current),
+                child: CarouselSlider(
+                  carouselController: _carouselController,
+                  options: CarouselOptions(
+                      height: size.height,
+                      viewportFraction: 1,
+                      scrollDirection: Axis.vertical,
+                      enableInfiniteScroll: false,
+                      scrollPhysics: const NeverScrollableScrollPhysics(),
+                      onPageChanged: (index, _) {
+                        setState(() {
+                          _current = index;
+                        });
+                      }),
+                  items: _pages,
+                ),
               ),
             ),
             Column(
