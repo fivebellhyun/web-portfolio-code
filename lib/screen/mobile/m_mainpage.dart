@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_lastpage.dart';
 import 'package:taoss3932_web_site/screen/mobile/m_page1.dart';
@@ -18,10 +17,10 @@ class MobileMainPage extends StatefulWidget {
   final Size size;
 
   @override
-  State<MobileMainPage> createState() => _MobilePastAndCommissionState();
+  State<MobileMainPage> createState() => _MobileMainPageState();
 }
 
-class _MobilePastAndCommissionState extends State<MobileMainPage> {
+class _MobileMainPageState extends State<MobileMainPage> {
   static const List<Widget> _pages = [
     MobilePage0(),
     MobilePage1(),
@@ -31,18 +30,31 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
     MobileLastPage(),
   ];
 
-  final CarouselSliderController _carouselController = CarouselSliderController();
+  final CarouselSliderController _carouselController =
+      CarouselSliderController();
+
+  bool _driveManually = false;
+
   late final WheelPageNavigator _navigator = WheelPageNavigator(
-    controller: _carouselController, 
-    pageCount: _pages.length
+    controller: _carouselController,
+    pageCount: _pages.length,
+    onSignalsConfirmed: () {
+      if (mounted) setState(() => _driveManually = true);
+    },
+    // 터치가 감지되면 네이티브 물리로 되돌린다.
+    // 손가락 추종은 네이티브 물리로만 구현되기 때문이다.
+    onNativeRestore: () {
+      if (mounted) setState(() => _driveManually = false);
+    },
+    debugWheel: false,
   );
 
   int _current = 0;
 
-  changeColor(int getcolor) {
+  Color changeColor(int getcolor) {
     if (getcolor == 0) {
       return const Color(0xFF080B14);
-    } else if(getcolor == 1) {
+    } else if (getcolor == 1) {
       return const Color.fromARGB(255, 253, 249, 239);
     } else if (getcolor == 2) {
       return const Color.fromARGB(255, 219, 237, 219);
@@ -60,9 +72,9 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
     final size = MediaQuery.of(context).size;
 
     return Listener(
-      onPointerSignal: (pointerSignal) {
-        _navigator.handlePointerSignal(pointerSignal, _current);
-      },
+      onPointerSignal: (signal) =>
+          _navigator.handlePointerSignal(signal, _current),
+      onPointerDown: _navigator.handlePointerDown,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 400),
         color: changeColor(_current),
@@ -71,46 +83,49 @@ class _MobilePastAndCommissionState extends State<MobileMainPage> {
             const SizedBox(width: 26),
             Expanded(
               child: GestureDetector(
-                onVerticalDragEnd: (details) => _navigator.handleDragEnd(details, _current),
+                onVerticalDragEnd: (details) =>
+                    _navigator.handleDragEnd(details, _current),
                 child: CarouselSlider(
                   carouselController: _carouselController,
                   options: CarouselOptions(
-                      height: size.height,
-                      viewportFraction: 1,
-                      scrollDirection: Axis.vertical,
-                      enableInfiniteScroll: false,
-                      scrollPhysics: const NeverScrollableScrollPhysics(),
-                      onPageChanged: (index, _) {
-                        setState(() {
-                          _current = index;
-                        });
-                      }),
+                    height: size.height,
+                    viewportFraction: 1,
+                    scrollDirection: Axis.vertical,
+                    enableInfiniteScroll: false,
+                    scrollPhysics:
+                        _driveManually ? const NeverScrollableScrollPhysics() : null,
+                    onPageChanged: (index, _) {
+                      setState(() {
+                        _current = index;
+                      });
+                    },
+                  ),
                   items: _pages,
                 ),
               ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [1, 2, 3, 4, 5, 6].asMap().entries.map((entry) {
+              children: List.generate(_pages.length, (index) {
+                final selected = _current == index;
+                final opacity = selected ? 0.9 : 0.4;
                 return GestureDetector(
-                  onTap: () => _carouselController.animateToPage(entry.key),
+                  onTap: () => _carouselController.animateToPage(index),
                   child: Container(
-                    width: _current == entry.key ? 10 : 5,
-                    height: _current == entry.key ? 10 : 5,
-                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                    width: selected ? 10 : 5,
+                    height: selected ? 10 : 5,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 8),
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle, 
-                      color: _current != 0 
-                        ? Colors.black.withOpacity(
-                          _current == entry.key ? 0.9 : 0.4
-                        )
-                        : Colors.white.withOpacity(
-                          _current == entry.key ? 0.9 : 0.4
-                        )
+                      shape: BoxShape.circle,
+                      // 0번 페이지만 배경이 어두워서 점 색을 반전한다.
+                      color: _current != 0
+                          ? Colors.black.withOpacity(opacity)
+                          : Colors.white.withOpacity(opacity),
                     ),
                   ),
                 );
-              }).toList(),
+              }),
             )
           ],
         ),

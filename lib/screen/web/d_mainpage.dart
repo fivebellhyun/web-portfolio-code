@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:taoss3932_web_site/screen/web/d_lastpage.dart';
 import 'package:taoss3932_web_site/screen/web/d_page1.dart';
@@ -18,10 +17,10 @@ class DesktopMainPage extends StatefulWidget {
   final Size size;
 
   @override
-  State<DesktopMainPage> createState() => _MobilePastAndCommissionState();
+  State<DesktopMainPage> createState() => _DesktopMainPageState();
 }
 
-class _MobilePastAndCommissionState extends State<DesktopMainPage> {
+class _DesktopMainPageState extends State<DesktopMainPage> {
   static const List<Widget> _pages = [
     DesktopPage0(),
     DesktopPage1(),
@@ -31,18 +30,29 @@ class _MobilePastAndCommissionState extends State<DesktopMainPage> {
     DesktopLastPage(),
   ];
 
-  final CarouselSliderController _carouselController = CarouselSliderController();
+  final CarouselSliderController _carouselController =
+      CarouselSliderController();
+
+  bool _driveManually = false;
+
   late final WheelPageNavigator _navigator = WheelPageNavigator(
-    controller: _carouselController, 
-    pageCount: _pages.length
+    controller: _carouselController,
+    pageCount: _pages.length,
+    onSignalsConfirmed: () {
+      if (mounted) setState(() => _driveManually = true);
+    },
+    onNativeRestore: () {
+      if (mounted) setState(() => _driveManually = false);
+    },
+    debugWheel: false,
   );
 
   int _current = 0;
 
-  changeColor(int getcolor) {
+  Color changeColor(int getcolor) {
     if (getcolor == 0) {
       return const Color(0xFF080B14);
-    } else if(getcolor == 1) {
+    } else if (getcolor == 1) {
       return const Color.fromARGB(255, 253, 249, 239);
     } else if (getcolor == 2) {
       return const Color.fromARGB(255, 201, 225, 219);
@@ -60,9 +70,9 @@ class _MobilePastAndCommissionState extends State<DesktopMainPage> {
     final size = MediaQuery.of(context).size;
 
     return Listener(
-      onPointerSignal: (pointerSignal) {
-          _navigator.handlePointerSignal(pointerSignal, _current);
-      },
+      onPointerSignal: (signal) =>
+          _navigator.handlePointerSignal(signal, _current),
+      onPointerDown: _navigator.handlePointerDown,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 400),
         color: changeColor(_current),
@@ -71,7 +81,8 @@ class _MobilePastAndCommissionState extends State<DesktopMainPage> {
             const SizedBox(width: 26),
             Expanded(
               child: GestureDetector(
-                onVerticalDragEnd: (details) => _navigator.handleDragEnd(details, _current),
+                onVerticalDragEnd: (details) =>
+                    _navigator.handleDragEnd(details, _current),
                 child: CarouselSlider(
                   carouselController: _carouselController,
                   options: CarouselOptions(
@@ -79,30 +90,36 @@ class _MobilePastAndCommissionState extends State<DesktopMainPage> {
                     viewportFraction: 1,
                     scrollDirection: Axis.vertical,
                     enableInfiniteScroll: false,
-                    scrollPhysics: const NeverScrollableScrollPhysics(),
+                    scrollPhysics:
+                        _driveManually ? const NeverScrollableScrollPhysics() : null,
                     onPageChanged: (index, _) {
                       setState(() {
                         _current = index;
                       });
-                    }
+                    },
                   ),
-                  items: _pages
+                  items: _pages,
                 ),
               ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [1, 2, 3, 4, 5, 6].asMap().entries.map((entry) {
+              children: List.generate(_pages.length, (index) {
+                final selected = _current == index;
                 return GestureDetector(
-                  onTap: () => _carouselController.animateToPage(entry.key),
+                  onTap: () => _carouselController.animateToPage(index),
                   child: Container(
-                    width: _current == entry.key ? 10 : 5,
-                    height: _current == entry.key ? 10 : 5,
-                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black.withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                    width: selected ? 10 : 5,
+                    height: selected ? 10 : 5,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 8),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black.withOpacity(selected ? 0.9 : 0.4),
+                    ),
                   ),
                 );
-              }).toList(),
+              }),
             )
           ],
         ),
